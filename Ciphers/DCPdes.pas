@@ -142,9 +142,15 @@ procedure TDCP_customdes.EncryptBlock(const InData; var OutData; KeyData: PDWord
 var
   l, r, t, u: dword;
   i: longint;
+  b: PByte;
+
 begin
-  r:= PDword(@InData)^;
-  l:= PDword(dword(@InData)+4)^;
+  b := @InData;
+  r:= PDword(b)^;
+
+  Inc(b, 4);
+
+  l:= PDword(b)^;
   t:= ((l shr 4) xor r) and $0f0f0f0f;
   r:= r xor t;
   l:= l xor (t shl 4);
@@ -228,17 +234,27 @@ begin
   t:= ((r shr 4) xor l) and $0f0f0f0f;
   l:= l xor t;
   r:= r xor (t shl 4);
+
+  b := @OutData;
   PDword(@OutData)^:= l;
-  PDword(dword(@OutData)+4)^:= r;
+  Inc(b, 4);
+  PDword(b)^:= r;
 end;
 
 procedure TDCP_customdes.DecryptBlock(const InData; var OutData; KeyData: PDWordArray);
 var
   l, r, t, u: dword;
   i: longint;
+  b: PByte;
+
 begin
-  r:= PDword(@InData)^;
-  l:= PDword(dword(@InData)+4)^;
+  b := @InData;
+  r:= PDword(b)^;
+
+  Inc(b, 4);
+
+  l:= PDword(b)^;
+
   t:= ((l shr 4) xor r) and $0f0f0f0f;
   r:= r xor t;
   l:= l xor (t shl 4);
@@ -322,8 +338,11 @@ begin
   t:= ((r shr 4) xor l) and $0f0f0f0f;
   l:= l xor t;
   r:= r xor (t shl 4);
+
+  b := @OutData;
   PDword(@OutData)^:= l;
-  PDword(dword(@OutData)+4)^:= r;
+  Inc(b, 4);
+  PDword(b)^:= r;
 end;
 
 class function TDCP_des.GetMaxKeySize: integer;

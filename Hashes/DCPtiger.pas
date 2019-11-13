@@ -56,8 +56,8 @@ implementation
 
 procedure TDCP_tiger.Compress;
 var
-  a, b, c, aa, bb, cc: int64;
-  x: array[0..7] of int64;
+  a, b, c, aa, bb, cc: UInt64;
+  x: array[0..7] of UInt64;
 begin
   a:= CurrentHash[0]; aa:= a;
   b:= CurrentHash[1]; bb:= b;

@@ -31,9 +31,9 @@ uses
 type
   TDCP_sha512base= class(TDCP_hash)
   protected
-    LenHi, LenLo: int64;
+    LenHi, LenLo: UInt64;
     Index: DWord;
-    CurrentHash: array[0..7] of int64;
+    CurrentHash: array[0..7] of UInt64;
     HashBuffer: array[0..127] of byte;
     procedure Compress;
   public
@@ -74,8 +74,8 @@ end;
 
 procedure TDCP_sha512base.Compress;
 var
-  a, b, c, d, e, f, g, h, t1, t2: int64;
-  W: array[0..79] of int64;
+  a, b, c, d, e, f, g, h, t1, t2: UInt64;
+  W: array[0..79] of Uint64;
   i: longword;
 begin
   Index:= 0;
