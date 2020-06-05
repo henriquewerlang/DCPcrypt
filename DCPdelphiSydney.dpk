@@ -1,0 +1,45 @@
+package DCPDelphiRio;
+
+{$R *.res}
+{$R *.otares}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'DCPcrypt cryptographic component library v2 BETA 3'}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl;
+
+contains
+  DCPbase64 in 'DCPbase64.pas',
+  DCPblockciphers in 'DCPblockciphers.pas',
+  DCPconst in 'DCPconst.pas',
+  DCPcrypt2 in 'DCPcrypt2.pas',
+  DCPdes in 'Ciphers\DCPdes.pas',
+  DCPmd5 in 'Hashes\DCPmd5.pas',
+  DCPreg in 'DCPreg.pas',
+  DCPtypes in 'DCPtypes.pas';
+
+end.
